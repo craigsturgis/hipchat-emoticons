@@ -2,7 +2,7 @@
 %html
   %head
     %meta(charset="utf-8")
-    %title HipChat emoticons
+    %title SR HipChat emoticons
     /[if lt IE 9]
       %script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
     %link(href="/stylesheets/screen.css" rel="stylesheet" type="text/css")
@@ -23,6 +23,16 @@
         <a href="http://www.hipchat.com/r/2zt39">HipChat</a> emoticons.
         Click to copy.
 
+    %h2 Custom
+
+    %p <a href="https://hipchat.com/admin/emoticons">Upload custom emoticons</a>.
+
+    .emoticons
+      - @custom.each do |e|
+        = partial :emoticon, :e => e
+
+    %h2 Standard emoticons
+
     %p
       - case params[:order]
       - when EmoticonFile::BY_RECENT
@@ -40,14 +50,6 @@
       - @emoticons.each do |e|
         = partial :emoticon, :e => e
 
-    %h2 Emoticons emeriti
-
-    %p These emoticons were removed by HipChat, but you can <a href="https://hipchat.com/admin/emoticons">upload them as custom emoticons</a>.
-
-    .emoticons
-      - @emeriti.each do |e|
-        = partial :emoticon, :e => e
-
     %footer
       %p
         %span.footer-part Not affiliated with Atlassian HipChat.
@@ -55,5 +57,5 @@
 
       %p
         %span.footer-part Last updated #{@updated_at.strftime("%b %e, %Y")}.
-        %span.footer-part This site is by <a href="http://henrik.nyh.se">Henrik Nyh</a>.
-        %span.footer-part <a href="https://github.com/henrik/hipchat-emoticons">View source on GitHub</a>.
+        %span.footer-part This site is by <a href="http://henrik.nyh.se">Henrik Nyh</a>. And modified to use the emoticon API by <a href="http://craigsturgis.com">Craig Sturgis</a>
+        %span.footer-part <a href="https://github.com/craigsturgis/hipchat-emoticons">View source on GitHub</a>.
